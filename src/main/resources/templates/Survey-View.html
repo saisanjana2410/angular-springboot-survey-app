@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Survey Details</title>
+</head>
+<body>
+
+<h2>Survey Details</h2>
+
+<p><strong>ID:</strong> <span th:text="${survey.id}"></span></p>
+
+<p><strong>Name:</strong>
+    <span th:text="${survey.firstName}"></span>
+    <span th:text="${survey.lastName}"></span>
+</p>
+
+<p><strong>Street:</strong> <span th:text="${survey.street}"></span></p>
+<p><strong>City:</strong> <span th:text="${survey.city}"></span></p>
+<p><strong>State:</strong> <span th:text="${survey.state}"></span></p>
+<p><strong>Zip:</strong> <span th:text="${survey.zip}"></span></p>
+
+<p><strong>Phone:</strong> <span th:text="${survey.telephone}"></span></p>
+<p><strong>Email:</strong> <span th:text="${survey.email}"></span></p>
+
+<p><strong>Date of Survey:</strong> <span th:text="${survey.dateOfSurvey}"></span></p>
+
+<p><strong>Liked Most:</strong> <span th:text="${survey.likedMost}"></span></p>
+<p><strong>Interested In:</strong> <span th:text="${survey.interestedIn}"></span></p>
+<p><strong>Likelihood:</strong> <span th:text="${survey.likelihood}"></span></p>
+
+<p><strong>Comments:</strong> <span th:text="${survey.comments}"></span></p>
+
+<br>
+
+<a href="/surveys">Back to List</a>
+
+</body>
+</html>

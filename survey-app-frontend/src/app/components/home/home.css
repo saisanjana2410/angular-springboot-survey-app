@@ -1,0 +1,142 @@
+/*
+Names:
+ Sanjana Kambalapally - G01506405
+ Shreya Shitole - G01517081
+ Shravani Vasa - G01543148
+ Akhil Akkineni - G01547445
+*/
+
+/*
+This file has the styling of home page which includes layout, theme colors, button designs and navigation.
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #006633 0%, #004d26 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.logo {
+  width: 120px;
+  height: 120px;
+  background: #FFCC33;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: 900;
+  color: #006633;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 40px rgba(255, 204, 51, 0.5);
+  border: 5px solid white;
+}
+
+h1 {
+  font-size: 48px;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 22px;
+  color: #FFCC33;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  min-width: 250px;
+}
+
+.btn .icon {
+  font-size: 64px;
+}
+
+.btn .text {
+  font-size: 20px;
+}
+
+.btn-primary {
+  background: #FFCC33;
+  color: #006633;
+}
+
+.btn-primary:hover {
+  background: #FFD700;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 204, 51, 0.5);
+}
+
+.btn-secondary {
+  background: white;
+  color: #006633;
+}
+
+.btn-secondary:hover {
+  background: #FFCC33;
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 35px 40px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,189 @@
+<!-- Names:
+ Sanjana Kambalapally - G01506405
+ Shreya Shitole - G01517081
+ Shravani Vasa - G01543148
+ Akhil Akkineni - G01547445
+  -->
+
+  <!-- THis HTML file includes Survey Form Layout. -->
+
+<div class="survey-container">
+  <div class="survey-card">
+    <h2>Campus Survey</h2>
+    <p class="survey-description">Please take a moment to share your feedback about our campus</p>
+    
+    <form (ngSubmit)="submitSurvey()" #surveyForm="ngForm">
+      
+      <!-- Personal Information Section -->
+      <div class="form-section">
+        <h3>Personal Information</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input 
+              id="firstName"
+              type="text" 
+              placeholder="Enter your first name" 
+              [(ngModel)]="survey.firstName" 
+              name="firstName" 
+              required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input 
+              id="lastName"
+              type="text" 
+              placeholder="Enter your last name" 
+              [(ngModel)]="survey.lastName" 
+              name="lastName" 
+              required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            id="email"
+            type="email" 
+            placeholder="your.email@example.com" 
+            [(ngModel)]="survey.email" 
+            name="email" 
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="telephone">Telephone *</label>
+          <input 
+            id="telephone"
+            type="tel" 
+            placeholder="(123) 456-7890" 
+            [(ngModel)]="survey.telephone" 
+            name="telephone"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="dateOfSurvey">Date of Survey *</label>
+          <input 
+            id="dateOfSurvey"
+            type="date" 
+            [(ngModel)]="survey.dateOfSurvey" 
+            name="dateOfSurvey"
+            required>
+        </div>
+      </div>
+
+      <!-- Address Section -->
+      <div class="form-section">
+        <h3>Address</h3>
+        
+        <div class="form-group">
+          <label for="street">Street Address *</label>
+          <input 
+            id="street"
+            type="text" 
+            placeholder="123 Main Street" 
+            [(ngModel)]="survey.street" 
+            name="street"
+            required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City *</label>
+            <input 
+              id="city"
+              type="text" 
+              placeholder="City" 
+              [(ngModel)]="survey.city" 
+              name="city"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="state">State *</label>
+            <input 
+              id="state"
+              type="text" 
+              placeholder="State" 
+              [(ngModel)]="survey.state" 
+              name="state"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="zip">Zip Code *</label>
+            <input 
+              id="zip"
+              type="text" 
+              placeholder="12345" 
+              [(ngModel)]="survey.zip" 
+              name="zip"
+              required>
+          </div>
+        </div>
+      </div>
+
+      <!-- Survey Questions Section -->
+      <div class="form-section">
+        <h3>Survey Questions</h3>
+
+        <div class="form-group">
+          <label>What did you like most about the campus? (Select all that apply)</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label" *ngFor="let option of optionsLikedMost">
+              <input 
+                type="checkbox" 
+                [checked]="survey.likedMost.includes(option)" 
+                (change)="toggleLikedMost(option)">
+              <span class="checkbox-text">{{option}}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>How did you become interested in the university?</label>
+          <div class="radio-group">
+            <label class="radio-label" *ngFor="let option of optionsInterestedIn">
+              <input 
+                type="radio" 
+                [(ngModel)]="survey.interestedIn" 
+                [value]="option" 
+                name="interestedIn">
+              <span class="radio-text">{{option}}</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="likelihood">Likelihood of recommending this school to others</label>
+          <select 
+            id="likelihood"
+            [(ngModel)]="survey.likelihood" 
+            name="likelihood">
+            <option value="">Select an option</option>
+            <option *ngFor="let option of optionsLikelihood" [value]="option">{{option}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="comments">Additional Comments</label>
+          <textarea 
+            id="comments"
+            placeholder="Please share any additional thoughts or feedback..." 
+            [(ngModel)]="survey.comments" 
+            name="comments"
+            rows="5"></textarea>
+        </div>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="cancelForm()">Cancel</button>
+        <button type="submit" class="btn-primary" [disabled]="!surveyForm.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

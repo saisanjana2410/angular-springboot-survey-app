@@ -1,0 +1,100 @@
+<!-- Names:
+ Sanjana Kambalapally - G01506405
+ Shreya Shitole - G01517081
+ Shravani Vasa - G01543148
+ Akhil Akkineni - G01547445
+  -->
+
+  <!-- THis HTML file includes Survey List Layout. -->
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Liked Most</th>
+      <th>Interested In</th>
+      <th>Likelihood</th>
+      <th>Comments</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of surveys">
+      <td>{{s.dateOfSurvey}}</td>
+      <td>{{s.firstName}}</td>
+      <td>{{s.lastName}}</td>
+      <td>{{s.street}}</td>
+      <td>{{s.city}}</td>
+      <td>{{s.state}}</td>
+      <td>{{s.zip}}</td>
+      <td>{{s.telephone}}</td>
+      <td>{{s.email}}</td>
+      <td>{{s.likedMost.join(', ')}}</td>
+      <td>{{s.interestedIn}}</td>
+      <td>{{s.likelihood}}</td>
+      <td>{{s.comments}}</td>
+      <td>
+        <button (click)="openEditModal(s)">Edit</button>
+        <button (click)="deleteSurvey(s.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Edit Modal -->
+<div class="modal" *ngIf="editingSurvey" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Edit Survey</h3>
+
+    <label>First Name: <input [(ngModel)]="editingSurvey.firstName"></label>
+    <label>Last Name: <input [(ngModel)]="editingSurvey.lastName"></label>
+    <label>Email: <input [(ngModel)]="editingSurvey.email"></label>
+    <label>Date: <input type="date" [(ngModel)]="editingSurvey.dateOfSurvey"></label>
+    <label>Street: <input [(ngModel)]="editingSurvey.street"></label>
+    <label>City: <input [(ngModel)]="editingSurvey.city"></label>
+    <label>State: <input [(ngModel)]="editingSurvey.state"></label>
+    <label>Zip: <input [(ngModel)]="editingSurvey.zip"></label>
+    <label>Telephone: <input [(ngModel)]="editingSurvey.telephone"></label>
+
+    <div>
+      Liked Most:
+      <div *ngFor="let opt of optionsLikedMost">
+        <input type="checkbox"
+               [checked]="editingSurvey.likedMost.includes(opt)"
+               (change)="toggleEditLikedMost(opt)" /> {{opt}}
+      </div>
+    </div>
+
+    <div>
+      Interested In:
+      <div *ngFor="let opt of optionsInterestedIn">
+        <input type="radio"
+               [(ngModel)]="editingSurvey.interestedIn"
+               [value]="opt"
+               name="editInterestedIn"> {{opt}}
+      </div>
+    </div>
+
+    <div>
+      Likelihood:
+      <select [(ngModel)]="editingSurvey.likelihood">
+        <option *ngFor="let opt of optionsLikelihood" [value]="opt">{{opt}}</option>
+      </select>
+    </div>
+
+    <label>Comments: <textarea [(ngModel)]="editingSurvey.comments"></textarea></label>
+
+    <div class="modal-actions">
+      <button type="button" (click)="updateSurvey()">Update</button>
+      <button type="button" (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
