@@ -1,10 +1,3 @@
-/*
- Names:
- Sanjana Kambalapally - G01506405
- Shreya Shitole - G01517081
- Shravani Vasa - G01543148
- Akhil Akkineni - G01547445
- */
 
 /*
  This file is named Swe642ApplicationTests.java
